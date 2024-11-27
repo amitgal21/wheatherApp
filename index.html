@@ -3,9 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Weather App</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="background-image">
+        <img src="./snowy.jpg" alt="Weather Background">
+    </div>
     
+    <div class="background-image"></div>
+    <div class="container">
+        <header>
+            <h1>🌤 Weather App</h1>
+            <p>Your daily and 5-day weather forecast at a glance</p>
+        </header>
+        <main>
+            <form id="weather-form" class="search-bar">
+                <input type="text" id="city" placeholder="Search for a city" required>
+                <button type="submit">Search</button>
+            </form>
+            <div class="unit-toggle">
+                <label for="unit">Units:</label>
+                <select id="unit">
+                    <option value="metric" selected>Celsius</option>
+                    <option value="imperial">Fahrenheit</option>
+                </select>
+            </div>
+            <div id="weather-output"></div>
+            <div id="forecast-output"></div>
+            <div id="error-message" class="error" style="display: none;"></div>
+        </main>
+        <footer>
+            <p>Weather App © 2024 | Powered by OpenWeatherMap</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
