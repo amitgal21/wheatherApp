@@ -1,4 +1,4 @@
-let lastCity = '';
+let lastCity = ''; 
 
 document.getElementById('weather-form').addEventListener('submit', function (event) {
     event.preventDefault();
@@ -47,8 +47,9 @@ function fetchForecastData(city) {
 
 function displayWeather(data, unit) {
     const weatherOutput = document.getElementById('weather-output');
-    const backgroundImage = document.querySelector('.background-image');
+    const backgroundImage = document.querySelector('.background-image img');
     const tempUnit = unit === 'metric' ? '°C' : '°F';
+
     weatherOutput.innerHTML = `
         <h2>${data.name}, ${data.sys.country}</h2>
         <p><strong>Temperature:</strong> ${data.main.temp}${tempUnit}</p>
@@ -56,9 +57,46 @@ function displayWeather(data, unit) {
         <p><strong>Humidity:</strong> ${data.main.humidity}%</p>
         <img src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" alt="Weather Icon">
     `;
+
     const weatherCondition = data.weather[0].main.toLowerCase();
-    
+
+    switch (weatherCondition) {
+        case 'clear':
+            backgroundImage.src = './sunny.jpg'; 
+            break;
+        case 'clouds':
+            backgroundImage.src = './cloudy.jpg'; 
+            break;
+        case 'rain':
+            backgroundImage.src = './rainy.jpg'; 
+            break;
+        case 'drizzle':
+            backgroundImage.src = './drizzle.jpg'; 
+            break;
+        case 'thunderstorm':
+            backgroundImage.src = './storm.jpg'; 
+            break;
+        case 'snow':
+            backgroundImage.src = './snowy.jpg'; 
+            break;
+        case 'mist':
+        case 'fog':
+        case 'smoke':
+        case 'haze':
+        case 'dust':
+        case 'sand':
+        case 'ash':
+        case 'squall':
+        case 'tornado':
+            backgroundImage.src = './atmosphere.jpg'; 
+            break;
+        default:
+            backgroundImage.src = './snowy.jpg'; 
+            break;
+    }
 }
+
+
 
 function displayForecast(data, unit) {
     const forecastOutput = document.getElementById('forecast-output');
